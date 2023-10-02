@@ -1,10 +1,10 @@
 import React, {useState} from 'react'
 import Expenses from './components/Expenses/Expenses';
-import NewExpense from './components/Expenses/NewExpense';
-import './components/Expenses/NewExpense.css';
+import NewExpense from './components/NewExpense/NewExpense';
+import './components/NewExpense/NewExpense.css';
 
 const App = () => {
-  const expenses = [
+  const DUMMY_EXPENSES = [
     {
       id: 'e1',
       title: 'Toilet Paper',
@@ -26,9 +26,13 @@ const App = () => {
     },
   ];
 
+  const [expenses, setExpenses] = useState(DUMMY_EXPENSES);
+
   const addExpenseHandler = expense => {
-    console.log(expense);
-  }
+    setExpenses((prevExpenses) => {
+      return [expense, ...prevExpenses];
+    });
+  };
 
   const [isAddExpenseDisplay, setIsAddExpenseDisplay] = useState(false);
   const toggleAddExpenseFormDisplay = () => {setIsAddExpenseDisplay(!isAddExpenseDisplay) }

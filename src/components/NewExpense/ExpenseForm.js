@@ -21,7 +21,7 @@ const submitHandler = (event) => {
 
   const expenseData = {
     title: enteredTitle,
-    amount: enteredAmount,
+    amount: +enteredAmount,
     date: new Date(enteredDate),
   }
 
@@ -65,8 +65,8 @@ const submitHandler = (event) => {
       </div>
     </div>
     <div className="new-expense__actions">
-          <button onClick={props.toggleAddExpenseFormDisplay}>Cancel</button>
-          <button type="submit">Add New Expense</button>
+          <button type="button" onClick={props.toggleAddExpenseFormDisplay}>Cancel</button>
+          <button type="submit" onClick={props.toggleAddExpenseFormDisplay}>Add New Expense</button>
       </div>
   </form>
  )
