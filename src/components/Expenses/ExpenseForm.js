@@ -65,6 +65,7 @@ const submitHandler = (event) => {
       </div>
     </div>
     <div className="new-expense__actions">
+          <button onClick={props.toggleAddExpenseFormDisplay}>Cancel</button>
           <button type="submit">Add New Expense</button>
       </div>
   </form>

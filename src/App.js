@@ -1,5 +1,7 @@
+import React, {useState} from 'react'
 import Expenses from './components/Expenses/Expenses';
 import NewExpense from './components/Expenses/NewExpense';
+import './components/Expenses/NewExpense.css';
 
 const App = () => {
   const expenses = [
@@ -28,9 +30,23 @@ const App = () => {
     console.log(expense);
   }
 
+  const [isAddExpenseDisplay, setIsAddExpenseDisplay] = useState(false);
+  const toggleAddExpenseFormDisplay = () => {setIsAddExpenseDisplay(!isAddExpenseDisplay) }
+
+  const addExpenseButtonOnly =  
+  <div className="new-expense">
+  <button onClick={toggleAddExpenseFormDisplay}>Add New Expense</button>
+  </div>
+  
+
+
   return (
     <div>
-      <NewExpense onAddExpense={addExpenseHandler}/>
+     {
+     isAddExpenseDisplay ? 
+     <NewExpense onAddExpense={addExpenseHandler} toggleAddExpenseFormDisplay={toggleAddExpenseFormDisplay}/> :  
+      addExpenseButtonOnly
+      }
       <Expenses expenses={expenses}/>
     </div>
   );
